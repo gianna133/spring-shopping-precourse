@@ -8,23 +8,23 @@
 #### 상품 목록 조회
 > GET `/api/products`
 - [ ] Controller 추가
-- [ ] ProductService에 getProductsList 메소드 추가
+- [ ] product에 getProductsList 메소드 추가
 #### 상품 조회
 > GET `/api/products/{productId}`
 - [ ] Controller 추가
-- [ ] ProductService에 getProducts 메소드 추가
+- [ ] product에 getProducts 메소드 추가
 #### 상품 추가
 > POST `/api/products`
 - [ ] Controller 추가
-- [ ] ProductService에 addProducts 메소드 추가
+- [ ] product에 addProducts 메소드 추가
 #### 상품 수정
 > PUT `/api/products/{productId}`
 - [ ] Controller 추가
-- [ ] ProductService에 editProducts 메소드 추가
+- [ ] product에 editProducts 메소드 추가
 #### 상품 삭제
 > DELETE `/api/products/{productId}`
 - [ ] Controller 추가
-- [ ] ProductService에 deleteProducts 메소드 추가
+- [ ] product에 deleteProducts 메소드 추가
 
 ### 2. 유효성 검사 및 예외 처리
 - [ ] 상품 이름 예외 처리에 PurgoMalum API 활용
@@ -36,22 +36,22 @@
 #### 회원가입
 > POST `/api/members/register`
 - [ ] Controller 추가
-- [ ] UserService에 signup 메소드 추가
+- [ ] user에 signup 메소드 추가
 #### 로그인
 > POST `/api/members/login`
 - [ ] Controller 추가
-- [ ] UserService에 login 메소드 추가
+- [ ] user에 login 메소드 추가
 
 ### 4. 위시 리스트
 #### 위시리스트 조회
 > GET `/api/wishes`
 - [ ] Controller 추가
-- [ ] WishService에 getWhishList 메소드 추가
+- [ ] wish에 getWhishList 메소드 추가
 #### 위시리스트 추가
 > POST `/api/wishes`
 - [ ] Controller 추가
-- [ ] WishService에 addWishlist 메소드 추가
+- [ ] wish에 addWishlist 메소드 추가
 #### 위시리스트 삭제
 > DELETE `/api/wishes/{wishId}`
 - [ ] Controller 추가
-- [ ] WishService에 deleteWishlist 메소드 추가
+- [ ] wish에 deleteWishlist 메소드 추가
