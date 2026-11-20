@@ -52,4 +52,11 @@ public class ProductService {
 
         productRepository.save(product);
     }
+
+    @Transactional
+    public void deleteProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("상품이 존재하지 않습니다. id=" + id));
+        productRepository.delete(product);
+    }
 }
