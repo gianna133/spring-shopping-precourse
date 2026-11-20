@@ -10,14 +10,18 @@ import shopping.product.dto.ProductResponseDto;
 import shopping.product.dto.UpdateProductRequestDto;
 import shopping.product.entity.Product;
 import shopping.product.repository.ProductRepository;
+import shopping.product.util.ProductNameValidator;
+import shopping.product.util.ProfanityChecker;
 
 @Service
 @Transactional(readOnly = true)
 public class ProductService {
     private final ProductRepository productRepository;
+    private final ProfanityChecker profanityChecker;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProfanityChecker profanityChecker) {
         this.productRepository = productRepository;
+        this.profanityChecker = profanityChecker;
     }
 
     public ProductResponseDto getProduct(Long id) {
@@ -35,6 +39,8 @@ public class ProductService {
 
     @Transactional
     public ProductResponseDto addProduct(AddProductRequestDto request) {
+        ProductNameValidator.validate(request.name());
+        profanityChecker.validate(request.name());
         Product product = new Product(request.name(), request.price(), request.count(), request.url());
         Product savedProduct = productRepository.save(product);
         return ProductResponseDto.from(savedProduct);
@@ -44,6 +50,8 @@ public class ProductService {
     public void updateProduct(Long id, UpdateProductRequestDto request) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("상품이 존재하지 않습니다. id=" + id));
+        ProductNameValidator.validate(request.name());
+        profanityChecker.validate(request.name());
         String name = request.name();
         Integer price = request.price();
         Integer count = request.count();
