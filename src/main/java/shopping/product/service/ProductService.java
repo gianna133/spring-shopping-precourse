@@ -1,0 +1,24 @@
+package shopping.product.service;
+
+import java.util.NoSuchElementException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import shopping.product.dto.ProductResponseDto;
+import shopping.product.entity.Product;
+import shopping.product.repository.ProductRepository;
+
+@Service
+@Transactional(readOnly = true)
+public class ProductService {
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    public ProductResponseDto getProduct(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("상품이 존재하지 않습니다. id=" + id));
+        return ProductResponseDto.from(product);
+    }
+}
