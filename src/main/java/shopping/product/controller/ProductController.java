@@ -6,6 +6,7 @@ import java.net.URI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import shopping.product.dto.AddProductRequestDto;
+import shopping.product.dto.ProductListResponseDto;
 import shopping.product.dto.ProductResponseDto;
 import shopping.product.service.ProductService;
 
@@ -17,6 +18,11 @@ public class ProductController {
 
     public ProductController(ProductService productService) {
         this.productService = productService;
+    }
+
+    @GetMapping
+    public ProductListResponseDto getProductList() {
+        return productService.getProductList();
     }
 
     @GetMapping("/{productId}")
