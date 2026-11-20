@@ -24,6 +24,13 @@ public class Product {
         this.url=url;
     }
 
+    public void update(String name, int price, int count, String url) {
+        this.name = name;
+        this.price = price;
+        this.count = count;
+        this.url = url;
+    }
+
     public Long getId() {
         return id;
     }
