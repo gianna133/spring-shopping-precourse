@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import shopping.product.dto.AddProductRequestDto;
 import shopping.product.dto.ProductListResponseDto;
 import shopping.product.dto.ProductResponseDto;
+import shopping.product.dto.UpdateProductRequestDto;
 import shopping.product.service.ProductService;
 
 @RestController
@@ -34,5 +35,12 @@ public class ProductController {
     public ResponseEntity<Void> addProduct(@Valid @RequestBody AddProductRequestDto request) {
         ProductResponseDto response = productService.addProduct(request);
         return ResponseEntity.created(URI.create("/api/products/" + response.id())).build();
+    }
+
+    @PutMapping("/{productId}")
+    public ResponseEntity<Void> updateProduct(@PathVariable Long productId,
+                                              @Valid @RequestBody UpdateProductRequestDto request) {
+        productService.updateProduct(productId, request);
+        return ResponseEntity.noContent().build();
     }
 }
